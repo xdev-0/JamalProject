@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robert Oppenheimer: Dark Story</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #8B0000;
+            --primary-dark: #470000;
+            --secondary: #696969;
+            --background: #0A0A0A;
+            --surface: #121212;
+            --error: #8B0000;
+            --on-background: #B0B0B0;
+            --on-surface: #C0C0C0;
+            --on-primary: #FFFFFF;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Raleway', sans-serif;
+            background-color: var(--background);
+            color: var(--on-background);
+            line-height: 1.7;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(139, 0, 0, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(105, 105, 105, 0.1) 0%, transparent 20%);
+            background-attachment: fixed;
+        }
+        
+        .container {
+            max-width: 1200px;
+            min-height: 100vh;
+            margin: 0 auto;
+            padding: 60px 30px;
+            background-color: rgba(10, 10, 10, 0.97);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(139, 0, 0, 0.2);
+        }
+        
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        h1 {
+            color: var(--primary);
+            text-align: center;
+            font-size: 3.2rem;
+            margin-bottom: 2rem;
+            letter-spacing: 2px;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        h1::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 3px;
+        }
+        
+        h2 {
+            color: var(--primary);
+            font-size: 2.4rem;
+            margin: 3.5rem 0 1.8rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        h2::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 60%;
+            width: 3px;
+            background: var(--primary);
+        }
+        
+        h3 {
+            color: var(--secondary);
+            font-size: 1.8rem;
+            margin: 2.5rem 0 1.5rem;
+        }
+        
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: var(--on-background);
+            line-height: 1.8;
+        }
+        
+        .quote {
+            font-style: italic;
+            background-color: rgba(70, 0, 0, 0.3);
+            padding: 2rem;
+            border-left: 4px solid var(--primary);
+            margin: 3rem 0;
+            font-size: 1.2rem;
+            position: relative;
+            border-radius: 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        }
+        
+        .quote::before {
+            content: "\201C";
+            font-family: Georgia, serif;
+            font-size: 5rem;
+            color: rgba(139, 0, 0, 0.3);
+            position: absolute;
+            left: 1rem;
+            top: 0.5rem;
+        }
+        
+        .story-section {
+            display: flex;
+            margin: 4rem 0;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 4rem;
+        }
+        
+        .story-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .story-image {
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+            border-radius: 0;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(139, 0, 0, 0.3);
+            filter: grayscale(30%) contrast(110%);
+        }
+        
+        .story-image:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(139, 0, 0, 0.3);
+            filter: grayscale(20%) contrast(120%);
+        }
+        
+        .timeline {
+            background-color: rgba(18, 18, 18, 0.9);
+            padding: 2.5rem;
+            border-radius: 0;
+            margin: 3rem 0;
+            border-left: 4px solid var(--primary);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .timeline ul {
+            list-style-type: none;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .timeline li {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            padding-left: 2.5rem;
+            position: relative;
+            line-height: 1.6;
+        }
+        
+        .timeline li::before {
+            content: "\f054";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            color: var(--primary);
+            position: absolute;
+            left: 0;
+            top: 0.2rem;
+            font-size: 0.8rem;
+        }
+        
+        .timeline strong {
+            color: var(--secondary);
+            font-weight: 500;
+        }
+        
+        .highlight-box {
+            background-color: rgba(18, 18, 18, 0.9);
+            border-left: 4px solid var(--primary);
+            padding: 2.5rem;
+            margin: 3rem 0;
+            border-radius: 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .highlight-box img {
+            width: 100%;
+            max-width: 600px;
+            margin: 2rem auto 0;
+            display: block;
+            border-radius: 0;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+            filter: grayscale(30%) contrast(110%);
+        }
+        
+        ul.features {
+            font-size: 1.1rem;
+            margin: 2.5rem 0;
+            list-style-type: none;
+        }
+        
+        ul.features li {
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-left: 2.5rem;
+            line-height: 1.6;
+        }
+        
+        ul.features li::before {
+            content: "\f00c";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            color: var(--primary);
+            position: absolute;
+            left: 0;
+            top: 0.1rem;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 5rem;
+            color: var(--on-background);
+            font-size: 0.9rem;
+            padding: 2rem;
+            border-top: 1px solid rgba(139, 0, 0, 0.5);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            color: var(--on-background);
+            font-size: 1.2rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 20px;
+            }
+            
+            h1 {
+                font-size: 2.4rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            h3 {
+                font-size: 1.5rem;
+            }
+            
+            .story-section {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            
+            .story-image {
+                width: 100%;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+            
+            .quote {
+                padding: 1.5rem;
+                font-size: 1.1rem;
+            }
+            
+            .timeline, .highlight-box {
+                padding: 1.5rem;
+            }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 1.5s ease-out forwards;
+        }
+        
+        .delay-1 { animation-delay: 0.3s; }
+        .delay-2 { animation-delay: 0.6s; }
+        .delay-3 { animation-delay: 0.9s; }
+        .delay-4 { animation-delay: 1.2s; }
+        
+        .easy-word {
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        .blood-splatter {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="rgba(139,0,0,0.1)" d="M30,10 Q50,5 70,10 Q90,20 85,40 Q80,60 50,90 Q20,60 15,40 Q10,20 30,10"/></svg>');
+            background-repeat: no-repeat;
+            opacity: 0.1;
+            z-index: -1;
+        }
+        
+        .blood-splatter-1 {
+            top: 10%;
+            left: 5%;
+            transform: rotate(45deg);
+        }
+        
+        .blood-splatter-2 {
+            bottom: 15%;
+            right: 8%;
+            transform: rotate(-20deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="fade-in">J. Robert Oppenheimer</h1>
+        <h2 class="fade-in delay-1">The Man Who Changed History</h2>
+        
+        <div class="story-section fade-in delay-2">
+            <div class="story-text">
+                <p><span class="easy-word">Robert Oppenheimer</span> was a very smart scientist. He was born in <span class="easy-word">New York</span> in <span class="easy-word">1904</span>. As a child, he loved learning and was very good at school.</p>
+                <p>He studied at famous universities like <span class="easy-word">Harvard</span> and <span class="easy-word">Cambridge</span>. Later, he became a teacher and helped many students become great scientists.</p>
+                <p>During <span class="easy-word">World War II</span>, he led a secret project to build a very powerful weapon called the <span class="easy-word">atomic bomb</span>.</p>
+            </div>
+            <img src="first.jpg" alt="Robert Oppenheimer portrait" class="story-image">
+        </div>
+        
+        <div class="quote fade-in delay-3">
+            <h3>"Now I am become Death, the destroyer of worlds."</h3>
+            <p>— Oppenheimer's famous words after seeing the first atomic bomb test</p>
+        </div>
+        
+        <h2 class="fade-in delay-3">Important Dates</h2>
+        <div class="timeline fade-in delay-4">
+            <ul>
+                <li><strong>1904:</strong> Born in New York</li>
+                <li><strong>1925:</strong> Finished Harvard University very quickly</li>
+                <li><strong>1942:</strong> Started working on the atomic bomb project</li>
+                <li><strong>July 1945:</strong> First atomic bomb test in New Mexico</li>
+                <li><strong>August 1945:</strong> Bombs dropped on Japan</li>
+                <li><strong>1967:</strong> Died in Princeton, New Jersey</li>
+            </ul>
+        </div>
+        
+        <div class="highlight-box fade-in">
+            <h3>The Atomic Bomb Project</h3>
+            <p>During the war, the U.S. government asked Oppenheimer to lead a team of scientists. Their job was to build a new kind of bomb using <span class="easy-word">atomic energy</span>.</p>
+            <p>They worked in secret in a place called <span class="easy-word">Los Alamos</span>. In <span class="easy-word">1945</span>, they tested the first bomb. It was much more powerful than anyone expected.</p>
+            <p>Later that year, two atomic bombs were dropped on <span class="easy-word">Japan</span>. This helped end World War II, but many people died.</p>
+            <img src="second.jpg" alt="Atomic bomb explosion">
+        </div>
+        
+        <h2 class="fade-in">Why Oppenheimer is Important</h2>
+        <ul class="features fade-in">
+            <li><strong>Science:</strong> He helped make America a leader in physics</li>
+            <li><strong>War:</strong> His work changed how wars are fought</li>
+            <li><strong>Peace:</strong> Later, he wanted countries to control atomic weapons</li>
+            <li><strong>Movies:</strong> His life inspired many films and books</li>
+        </ul>
+        
+        <div class="highlight-box fade-in">
+            <h3>After the War</h3>
+            <p>After the war, Oppenheimer became famous but also had problems. Some people didn't trust him because of his old friends.</p>
+            <p>In <span class="easy-word">1954</span>, the government took away his security job. But he kept teaching and thinking about science until he died.</p>
+            <img src="meetin.jpg" alt="Oppenheimer at a meeting">
+        </div>
+        
+        <footer class="fade-in">
+            <p> <strong>© 2025 Create By Jamal Al Shamre </strong></p>
+            <p>"We knew the world would not be the same. A few people laughed, a few people cried. Most people were silent."</p>
+            <div class="social-links">
+                <a href="https://github.com" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" aria-label="Developers"><i class="fas fa-code"></i></a>
+            </div>
+        </footer>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            fadeElements.forEach(el => {
+                el.style.opacity = 0;
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 1s ease, transform 1s ease';
+                observer.observe(el);
+            });
+            
+            setInterval(() => {
+                if (Math.random() > 0.9) {
+                    document.body.style.filter = 'brightness(0.95)';
+                    setTimeout(() => {
+                        document.body.style.filter = 'brightness(1)';
+                    }, 100);
+                }
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
